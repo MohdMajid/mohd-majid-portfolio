@@ -1,0 +1,235 @@
+{
+  "contacts": [
+    {
+      "name": "Mohd Majid",
+      "email": "mohdmajid51091@gmail.com",
+      "subject": "discuss about AI related",
+      "message": "ai agent",
+      "id": 1786954851077,
+      "status": "new",
+      "createdAt": "2026-08-17T08:20:51.077Z"
+    },
+    {
+      "name": "Mohd Majid",
+      "email": "mohdmajid51091@gmail.com",
+      "subject": "To develop a website",
+      "message": "E commerce website",
+      "id": 1786867991054,
+      "status": "new",
+      "createdAt": "2026-08-16T08:13:11.054Z"
+    }
+  ],
+  "projects": [
+    {
+      "title": "Personal Portfolio",
+      "category": "Web",
+      "description": "Modern futuristic personal portfolio website.",
+      "image": "/assets/images/portfolio.png",
+      "github": "https://github.com/MohdMajid/portfolio",
+      "demo": "https://portfolio-alone-f43b.vercel.app/",
+      "id": 1786881945492,
+      "technologies": [],
+      "published": true,
+      "featured": true
+    },
+    {
+      "title": "Banarsi Store",
+      "category": "Full Stack",
+      "description": "A full-stack e-commerce website for browsing and shopping Banarasi sarees, with product management and admin functionality.",
+      "image": "assets/images/banarsi.png",
+      "github": "https://github.com/MohdMajid/banarsi-store",
+      "demo": "https://banarsi-store.vercel.app/",
+      "id": 1786871553435,
+      "technologies": [],
+      "published": true,
+      "featured": true
+    },
+    {
+      "title": "Quality Index Prediction",
+      "category": "AI / ML",
+      "description": "Machine learning project for predicting quality index using ML algorithms.",
+      "image": "assets/images/project-1.svg",
+      "github": "#",
+      "demo": "#",
+      "technologies": [],
+      "published": true,
+      "featured": false
+    },
+    {
+      "title": "E-Commerce Web Application",
+      "category": "Full Stack",
+      "description": "Full-stack e-commerce application with product management, shopping flow and admin functionality.",
+      "image": "assets/images/project-2.svg",
+      "github": "#",
+      "demo": "#",
+      "technologies": [],
+      "published": true,
+      "featured": false
+    },
+    {
+      "title": "Weather Forecast App",
+      "category": "API / Web",
+      "description": "Real-time weather application using weather API integration.",
+      "image": "assets/images/project-3.svg",
+      "github": "#",
+      "demo": "#",
+      "technologies": [],
+      "published": true,
+      "featured": false
+    },
+    {
+      "title": "Personal Portfolio",
+      "category": "Web",
+      "description": "Modern futuristic personal portfolio website.",
+      "image": "assets/images/project-4.svg",
+      "github": "#",
+      "demo": "#",
+      "technologies": [],
+      "published": true,
+      "featured": true
+    }
+  ],
+  "skills": [
+    {
+      "id": "python",
+      "icon": "🐍",
+      "name": "Python",
+      "level": 90
+    },
+    {
+      "id": "ml",
+      "icon": "🧠",
+      "name": "Machine Learning",
+      "level": 80
+    },
+    {
+      "id": "dl",
+      "icon": "◉",
+      "name": "Deep Learning",
+      "level": 75
+    },
+    {
+      "id": "ai",
+      "icon": "✦",
+      "name": "Artificial Intelligence",
+      "level": 85
+    },
+    {
+      "id": "js",
+      "icon": "JS",
+      "name": "JavaScript",
+      "level": 80
+    },
+    {
+      "id": "html",
+      "icon": "HTML",
+      "name": "HTML5",
+      "level": 90
+    },
+    {
+      "id": "css",
+      "icon": "CSS",
+      "name": "CSS3",
+      "level": 90
+    },
+    {
+      "id": "tw",
+      "icon": "TW",
+      "name": "Tailwind CSS",
+      "level": 75
+    },
+    {
+      "id": "node",
+      "icon": "N",
+      "name": "Node.js",
+      "level": 75
+    },
+    {
+      "id": "express",
+      "icon": "EX",
+      "name": "Express.js",
+      "level": 75
+    },
+    {
+      "id": "mongo",
+      "icon": "DB",
+      "name": "MongoDB",
+      "level": 70
+    },
+    {
+      "id": "git",
+      "icon": "G",
+      "name": "Git",
+      "level": 80
+    },
+    {
+      "id": "github",
+      "icon": "GH",
+      "name": "GitHub",
+      "level": 80
+    }
+  ],
+  "experience": [
+    {
+      "id": "exp1",
+      "type": "experience",
+      "period": "2024 — Present",
+      "title": "AI/ML Developer (Learning)",
+      "place": "Personal Projects",
+      "description": "Building ML models, deep learning projects and real-world AI solutions."
+    },
+    {
+      "id": "exp2",
+      "type": "education",
+      "period": "2022 — Present",
+      "title": "B.Tech CSE (AI & ML)",
+      "place": "Dr. A.P.J. Abdul Kalam Technical University (AKTU)",
+      "description": "Computer Science & Engineering with focus on Artificial Intelligence and Machine Learning."
+    },
+    {
+      "id": "exp3",
+      "type": "experience",
+      "period": "2023",
+      "title": "Web Developer",
+      "place": "Personal Projects",
+      "description": "Working on full-stack projects using modern web technologies."
+    },
+    {
+      "id": "exp4",
+      "type": "education",
+      "period": "2021",
+      "title": "Higher Secondary",
+      "place": "School Education",
+      "description": "Completed higher secondary education."
+    }
+  ],
+  "settings": {
+    "title": "Mohd Majid | AI & ML Developer",
+    "name": "Mohd Majid",
+    "logo": "MM",
+    "role": "AI & ML DEVELOPER • FULL STACK ENTHUSIAST",
+    "eyebrow": "AI & ML Enthusiast",
+    "heroDescription": "I build smart, scalable and impactful digital solutions using Artificial Intelligence, Machine Learning and modern web technologies.",
+    "about": "I'm a B.Tech CSE (AI & ML) student and a passionate developer who enjoys turning ideas into useful real-world applications. I work across machine learning, web development and software projects.",
+    "location": "Lucknow, India",
+    "degree": "B.Tech CSE",
+    "focus": "AI & ML",
+    "profileImage": "assets/images/profile.png",
+    "cvPath": "assets/Mohd-Majid-CV.pdf",
+    "email": "mohdmajid51091@gmail.com",
+    "phone": "",
+    "social": {
+      "github": "https://github.com/MohdMajid",
+      "linkedin": "",
+      "instagram": "",
+      "x": ""
+    },
+    "theme": {
+      "accent": "purple-blue",
+      "dark": true
+    },
+    "jwtExpiresIn": "8h",
+    "sessionVersion": 1
+  },
+  "activity": []
+}

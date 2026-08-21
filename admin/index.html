@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mohd Majid — Admin Dashboard</title>
+<link rel="stylesheet" href="/admin/admin.css">
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="brand"><b>MM</b><span>Admin Panel</span></div>
+    <nav id="nav">
+      <button class="nav-btn active" data-section="dashboard">⌂ <span>Dashboard</span></button>
+      <button class="nav-btn" data-section="projects">▣ <span>Projects</span></button>
+      <button class="nav-btn" data-section="messages">✉ <span>Messages</span></button>
+      <button class="nav-btn" data-section="content">✦ <span>Portfolio Content</span></button>
+      <button class="nav-btn" data-section="skills">⚡ <span>Skills</span></button>
+      <button class="nav-btn" data-section="journey">◈ <span>Experience & Education</span></button>
+      <button class="nav-btn" data-section="settings">⚙ <span>Website Settings</span></button>
+      <button class="nav-btn" data-section="security">⌕ <span>Admin Security</span></button>
+      <button class="nav-btn" data-section="activity">◷ <span>Activity Logs</span></button>
+    </nav>
+    <button class="logout side-logout" onclick="logout()">Logout</button>
+  </aside>
+
+  <main class="main">
+    <div id="login" class="login card">
+      <div class="login-brand">MM</div><h1>Admin Login</h1><p>Manage your portfolio from one place.</p>
+      <input id="email" type="email" placeholder="Admin email" autocomplete="username">
+      <input id="password" type="password" placeholder="Password" autocomplete="current-password">
+      <button class="primary full" onclick="login()">Sign in</button><p id="loginMsg" class="error"></p>
+    </div>
+
+    <section id="dash" hidden>
+      <header class="topbar"><div><span class="eyebrow">MOHD MAJID / ADMIN</span><h1 id="pageTitle">Dashboard</h1></div><div class="top-actions"><span id="healthBadge" class="badge">Checking...</span><button class="logout" onclick="logout()">Logout</button></div></header>
+
+      <section class="page active" data-page="dashboard">
+        <div class="stats-grid">
+          <div class="stat"><span>Total Projects</span><b id="totalProjects">0</b><small>All saved projects</small></div>
+          <div class="stat"><span>Contact Messages</span><b id="totalMessages">0</b><small id="unreadHint">0 unread</small></div>
+          <div class="stat"><span>Published</span><b id="publishedProjects">0</b><small>Visible on portfolio</small></div>
+          <div class="stat"><span>Drafts</span><b id="draftProjects">0</b><small>Hidden from portfolio</small></div>
+        </div>
+        <div class="grid-2">
+          <div class="card"><div class="card-head"><div><span class="eyebrow">LATEST</span><h2>Last Updated Project</h2></div><button class="ghost" onclick="go('projects')">Manage Projects →</button></div><div id="latestProject"></div></div>
+          <div class="card"><div class="card-head"><div><span class="eyebrow">MESSAGES</span><h2>Recent Contact</h2></div><button class="ghost" onclick="go('messages')">View All →</button></div><div id="recentMessage"></div></div>
+        </div>
+      </section>
+
+      <section class="page" data-page="projects" hidden>
+        <div class="section-head"><div><span class="eyebrow">PROJECT MANAGEMENT</span><h2>Projects</h2></div><button class="primary" onclick="newProject()">＋ Add Project</button></div>
+        <div class="card form-card">
+          <div class="card-head"><h3 id="projectFormTitle">Add New Project</h3><button class="ghost" id="cancelProject" onclick="resetProjectForm()" hidden>Cancel</button></div>
+          <form id="projectForm" class="form-grid">
+            <input id="projectId" type="hidden">
+            <label>Project Title<input id="projectTitle" required placeholder="Banarsi Store"></label>
+            <label>Category<input id="projectCategory" placeholder="Full Stack"></label>
+            <label class="wide">Description<textarea id="projectDescription" rows="4" placeholder="Describe your project..."></textarea></label>
+            <label>Technologies<input id="projectTechnologies" placeholder="HTML, CSS, JavaScript, Node.js"></label>
+            <label>Image Path<input id="projectImage" placeholder="assets/images/project-1.svg"></label>
+            <label>GitHub URL<input id="projectGithub" type="url" placeholder="https://github.com/..."></label>
+            <label>Live Demo URL<input id="projectDemo" type="url" placeholder="https://..."></label>
+            <label class="check"><input id="projectPublished" type="checkbox" checked> Published</label>
+            <label class="check"><input id="projectFeatured" type="checkbox"> Featured Project</label>
+            <div class="wide upload-row"><input id="projectFile" type="file" accept="image/png,image/jpeg,image/webp,image/gif,image/svg+xml"><button type="button" class="ghost" onclick="uploadProjectImage()">Upload Image</button><span id="uploadStatus"></span></div>
+            <div class="wide"><button id="projectSubmit" class="primary" type="submit">Add Project</button><span id="projectMsg" class="form-msg"></span></div>
+          </form>
+        </div>
+        <div class="toolbar"><input id="projectSearch" placeholder="Search projects..." oninput="renderProjects()"><select id="projectFilter" onchange="renderProjects()"><option value="all">All</option><option value="published">Published</option><option value="draft">Drafts</option><option value="featured">Featured</option></select></div>
+        <div id="projectList" class="cards-list"></div>
+      </section>
+
+      <section class="page" data-page="messages" hidden>
+        <div class="section-head"><div><span class="eyebrow">CONTACT</span><h2>Contact Messages</h2></div></div>
+        <div class="toolbar"><input id="messageSearch" placeholder="Search name, email or message..." oninput="renderMessages()"><select id="messageFilter" onchange="renderMessages()"><option value="all">All messages</option><option value="new">Unread</option><option value="read">Read</option></select></div>
+        <div id="messageList" class="cards-list"></div>
+      </section>
+
+      <section class="page" data-page="content" hidden>
+        <div class="section-head"><div><span class="eyebrow">PORTFOLIO CONTENT</span><h2>Profile & About</h2></div><button class="primary" onclick="saveSettings()">Save Content</button></div>
+        <div class="card form-grid">
+          <label>Name<input id="setName"></label><label>Portfolio Title<input id="setTitle"></label><label>Role / Hero Label<input id="setRole"></label><label>Eyebrow<input id="setEyebrow"></label>
+          <label class="wide">Hero Description<textarea id="setHero" rows="3"></textarea></label><label class="wide">About Section<textarea id="setAbout" rows="5"></textarea></label>
+          <label>Location<input id="setLocation"></label><label>Degree<input id="setDegree"></label><label>Focus<input id="setFocus"></label><label>Email<input id="setEmail" type="email"></label><label>Phone<input id="setPhone"></label><label>Profile Image Path<input id="setProfileImage"></label><label>CV Path<input id="setCv"></label>
+          <div class="wide"><span id="contentMsg" class="form-msg"></span></div>
+        </div>
+      </section>
+
+      <section class="page" data-page="skills" hidden>
+        <div class="section-head"><div><span class="eyebrow">SKILL MANAGEMENT</span><h2>Skills</h2></div><button class="primary" onclick="openSkillForm()">＋ Add Skill</button></div>
+        <div id="skillForm" class="card form-grid" hidden><label>Skill Name<input id="skillName"></label><label>Icon<input id="skillIcon" placeholder="🐍 or JS"></label><label>Level <input id="skillLevel" type="number" min="0" max="100" value="80"></label><div><button class="primary" onclick="saveSkill()">Save Skill</button> <button class="ghost" onclick="closeSkillForm()">Cancel</button></div></div>
+        <div id="skillsList" class="skill-admin-grid"></div>
+      </section>
+
+      <section class="page" data-page="journey" hidden>
+        <div class="section-head"><div><span class="eyebrow">JOURNEY</span><h2>Experience & Education</h2></div><button class="primary" onclick="openJourneyForm()">＋ Add Experience / Education</button></div>
+        <div id="journeyForm" class="card form-grid" hidden><input id="journeyId" type="hidden"><label>Type<select id="journeyType"><option value="experience">Experience</option><option value="education">Education</option></select></label><label>Period<input id="journeyPeriod" placeholder="2024 — Present"></label><label>Company / College<input id="journeyPlace"></label><label>Position / Degree<input id="journeyTitle"></label><label class="wide">Description<textarea id="journeyDescription" rows="4"></textarea></label><div><button class="primary" onclick="saveJourney()">Save</button> <button class="ghost" onclick="closeJourneyForm()">Cancel</button></div></div>
+        <div id="journeyList" class="cards-list"></div>
+      </section>
+
+      <section class="page" data-page="settings" hidden>
+        <div class="section-head"><div><span class="eyebrow">WEBSITE SETTINGS</span><h2>Socials & Theme</h2></div><button class="primary" onclick="saveSettings()">Save Settings</button></div>
+        <div class="card form-grid">
+          <label>GitHub<input id="setGithub" type="url"></label><label>LinkedIn<input id="setLinkedin" type="url"></label><label>Instagram<input id="setInstagram" type="url"></label><label>X / Twitter<input id="setX" type="url"></label>
+          <label>Theme<select id="setTheme"><option value="purple-blue">Purple / Blue</option><option value="cyan">Cyan</option><option value="violet">Violet</option></select></label><label>JWT Expiry<select id="setJwt"><option value="1h">1 hour</option><option value="8h">8 hours</option><option value="24h">24 hours</option><option value="7d">7 days</option></select></label>
+          <div class="wide security-note"><b>Configuration</b><p>Keep your real admin credentials and JWT secret inside <code>backend/.env</code>. Never commit that file to GitHub.</p><span id="configStatus"></span></div>
+        </div>
+      </section>
+
+      <section class="page" data-page="security" hidden>
+        <div class="section-head"><div><span class="eyebrow">SECURITY</span><h2>Admin Security</h2></div></div>
+        <div class="grid-2">
+          <div class="card"><h3>Change Password</h3><p class="muted">Your new password must contain at least 6 characters.</p><input id="currentPassword" type="password" placeholder="Current password"><input id="newPassword" type="password" placeholder="New password"><input id="confirmPassword" type="password" placeholder="Confirm new password"><button class="primary" onclick="changePassword()">Change Password</button><p id="passwordMsg" class="form-msg"></p></div>
+          <div class="card"><h3>Sessions</h3><p class="muted">Immediately invalidate all currently issued admin JWT sessions.</p><button class="danger" onclick="logoutAll()">Logout All Sessions</button><hr><h3>JWT Secret</h3><p class="muted">Regenerating the secret invalidates every session.</p><button class="danger" onclick="regenerateSecret()">Regenerate JWT Secret</button></div>
+        </div>
+      </section>
+
+      <section class="page" data-page="activity" hidden>
+        <div class="section-head"><div><span class="eyebrow">AUDIT TRAIL</span><h2>Activity Logs</h2></div></div>
+        <div class="card" id="activityList"></div>
+      </section>
+    </section>
+  </main>
+</div>
+
+<div id="modal" class="modal" hidden><div class="modal-box"><button class="modal-close" onclick="closeModal()">×</button><div id="modalBody"></div></div></div>
+<script src="/admin/admin.js"></script>
+</body>
+</html>
